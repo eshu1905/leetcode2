@@ -1,43 +1,18 @@
 class Solution(object):
-    def pw(self, a, b):
-        ans = 1
-        while b:
-            ans *= a
-            b -= 1
-        return ans
-
-    def get(self, n, l, s):
-        N = str(n)
-        ans = 0
-
-        if len(N) < len(s):
-            return 0
-        elif len(N) > len(s):
-            ok = True
-            for i in range(len(N) - len(s)):
-                ok &= (int(N[i]) - 0) <= l
-                cur = min(l + 1, int(N[i]) - 0)
-
-                if i == (len(N) - len(s) - 1):
-                    cur += ok and (N[len(N) - len(s):] >= s)
-
-                for j in range(i + 1, len(N) - len(s)):
-                    cur *= l + 1
-
-                ans += cur
-
-                if int(N[i]) > l:
-                    break
-        else:
-            ans += int(N >= s)
-
-        return ans
-
     def numberOfPowerfulInt(self, start, finish, limit, s):
-        return self.get(finish, limit, s) - self.get(start - 1, limit, s)
-    
-        
+        def baho(num):
+            count = 0
+            strNum=str(num)
 
+            for i in range(len(strNum)-len(s)):
+                count += min(limit + 1, int(strNum[i])) * (limit + 1) ** (len(strNum) - len(s) - i - 1)
+                if int(strNum[i]) > limit:
+                    break
+            else:
+                count += (int(strNum[-len(s):]) >= int(s))
+            return count
+
+        return baho(finish) - baho(start-1)
         """
         :type start: int
         :type finish: int
