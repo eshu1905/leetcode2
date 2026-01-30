@@ -1,11 +1,13 @@
 class Solution(object):
     def removeDuplicates(self, nums):
-        k=0
-        for i in range(len(nums)):
-            if nums[k]!=nums[i]:
-                k+=1
-                nums[k],nums[i]=nums[i],nums[k]
-        return k+1
+        arr=[]
+        for i in nums:
+            if i not in arr:
+                arr.append(i)
+        for i in range(len(arr)):
+            nums[i]=arr[i]
+        return len(arr)
+       
 
         """
         :type nums: List[int]
