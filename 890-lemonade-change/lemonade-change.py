@@ -4,7 +4,6 @@ class Solution(object):
         ten=0
         twenty=0
         n=len(bills)
-        stack=[]
         for i  in range(n):
             if i==0 and (bills[i]==10 or bills[i]==20):
                 return False
