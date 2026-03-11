@@ -6,10 +6,8 @@ class Solution:
                 return False
 
             jump=max(jump,nums[i]+i)
-        if jump<len(nums)-1:
-            return False
-        else:
-            return True
+        
+        return True
 
 
     
