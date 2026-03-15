@@ -15,9 +15,9 @@ class Solution:
             while curr:
                 stack.append(curr)
                 curr=curr.left
-            node=stack.pop()
-            inorder.append(node.val)
-            curr=node.right
+            curr=stack.pop()
+            inorder.append(curr.val)
+            curr=curr.right
         return inorder
 
             
