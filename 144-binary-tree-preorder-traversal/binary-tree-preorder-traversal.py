@@ -9,15 +9,15 @@ class Solution:
         arr=[]
         def preorder(root):
             if not root:
-                return
+                return []
             if root:
                 arr.append(root.val)
                 preorder(root.left)
                 preorder(root.right)
             return arr
         preorder(root)
-        if not arr:
-            return []
+        # if not arr:
+        #     return []
         return arr
 
 
