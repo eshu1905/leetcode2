@@ -4,8 +4,7 @@
 #         self.val = val
 #         self.left = left
 #         self.right = right
-from collections import deque
-import math
+
 class Solution:
     def isBalanced(self, root: Optional[TreeNode]) -> bool:
         if not root:
@@ -13,12 +12,17 @@ class Solution:
         def length(root):
             if not root:
                 return 0
+            
+            left=length(root.left)
+            if left==-1:
+                return -1
+            right=length(root.right)
+            if right==-1:
+                return -1
+            if abs(left-right)>1:
+                return -1
             return 1+max(length(root.left),length(root.right))
-        left=length(root.left)
-        right=length(root.right)
-        if abs(left-right)>1:
-            return False
-        return self.isBalanced(root.left) and self.isBalanced(root.right)
+        return length(root)!=-1
         
 
         
