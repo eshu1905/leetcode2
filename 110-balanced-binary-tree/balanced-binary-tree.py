@@ -21,7 +21,7 @@ class Solution:
                 return -1
             if abs(left-right)>1:
                 return -1
-            return 1+max(length(root.left),length(root.right))
+            return 1+max(left,right)
         return length(root)!=-1
         
 
