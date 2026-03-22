@@ -3,45 +3,17 @@
 #     def __init__(self, val=0, left=None, right=None):
 #         self.val = val
 #         self.left = left
-#  
-from collections import deque
+#         self.right = right
 class Solution(object):
     def isSameTree(self, p, q):
-        r = 1
-    
         if not p and not q:
             return True
-        elif (not p and q) or (p and not q):
+        if not p or not q:
             return False
-    
-        def level(root):
-            if not root:
-                return []
-        
-            queue = deque([(root, r)])
-            result = []
-        
-            while queue:
-                size = len(queue)
-                ans = []
+        if p.val!=q.val:
+            return False
+        return self.isSameTree(p.left,q.left) and self.isSameTree(p.right,q.right)
 
-                for _ in range(size):
-                    ele, pos = queue.popleft()
-                    ans.append([ele.val, pos])   # store value, not node
-                
-                    if ele.left:
-                        queue.append((ele.left, 2 * pos))
-                    if ele.right:
-                        queue.append((ele.right, 2 * pos + 1))
-            
-                result.append(ans)
-        
-            return result
-    
-        s1 = level(p)
-        s2 = level(q)
-    
-        return s1 == s2
         """
         :type p: Optional[TreeNode]
         :type q: Optional[TreeNode]
