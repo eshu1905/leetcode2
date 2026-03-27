@@ -10,8 +10,8 @@ class Solution(object):
             return 0
         def dfs(root):
             if not root:
-                return 
-            return 1+max(0,dfs(root.left))+max(0,dfs(root.right))
+                return 0 
+            return 1+dfs(root.left)+dfs(root.right)
         return dfs(root)
         """
         :type root: Optional[TreeNode]
