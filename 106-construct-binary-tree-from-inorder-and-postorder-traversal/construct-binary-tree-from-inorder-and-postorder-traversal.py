@@ -13,8 +13,7 @@ class Solution(object):
             root.left=self.buildTree(inorder[0:index],postorder)
            
             return root
-        else:
-            return None
+       
 
 
 
